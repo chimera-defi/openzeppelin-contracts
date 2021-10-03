@@ -435,7 +435,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, IERC721Enumerable 
     function _checkOnERC721Received(address from, address to, uint256 tokenId, bytes memory _data)
         private returns (bool)
     {
-         return false;
+        return true;
         // Since EOAs on OVM style L2s are contracts, the following will brick NFT transfers
         if (!to.isContract()) {
             return true;
