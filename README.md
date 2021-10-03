@@ -1,5 +1,28 @@
 # <img src="logo.svg" alt="OpenZeppelin" height="40px">
 
+# OVM notes
+
+This fork tries to change the OZ implementation 3.4.2, that works for OVM compatible SOL versions 0.6.12, 0.7.6, to work properly on OVM. 
+Changes are on the `chimera-defi-metis` branch in the PR. 
+
+```
+npm i --save @openzeppelin/contracts-metis@git+https://github.com/chimera-defi/openzeppelin-contracts-ovm#chimera-defi-metis
+
+or add 
+    "@openzeppelin/contracts-metis": "git://github.com/chimera-defi/openzeppelin-contracts#chimera-defi-metis",
+
+to package.json and install
+
+import as so:
+import "@openzeppelin/contracts-metis/contracts/token/ERC20/IERC20.sol";
+
+```
+
+Changes:
+- Remove reliance on ETH native balance in Address.sol
+- Since OVM EOAs are smart contracts, be wary of isContract checks
+- Related - ERC721 impl is changed to not check if the reciever address is a contract and implements ERC721 reciever
+
 [![Docs](https://img.shields.io/badge/docs-%F0%9F%93%84-blue)](https://docs.openzeppelin.com/contracts)
 [![NPM Package](https://img.shields.io/npm/v/@openzeppelin/contracts.svg)](https://www.npmjs.org/package/@openzeppelin/contracts)
 [![Coverage Status](https://codecov.io/gh/OpenZeppelin/openzeppelin-contracts/graph/badge.svg)](https://codecov.io/gh/OpenZeppelin/openzeppelin-contracts)
